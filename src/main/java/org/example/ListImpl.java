@@ -39,10 +39,14 @@ public class ListImpl <T> implements List <T> {
         if (position == size) {
             add(element);
         } else if (position == 0){
-            newNode.next=current;
-            current.prev=newNode;
-            first=newNode;
-            size++;
+            if (first == null) {
+                first = newNode;
+            } else {
+                newNode.next = current;
+                current.prev = newNode;
+                first = newNode;
+                size++;
+            }
 
         } else {
             newNode.prev = current.prev;
